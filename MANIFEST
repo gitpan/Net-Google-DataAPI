@@ -14,6 +14,7 @@ inc/Test/Exception.pm
 inc/Test/MockModule.pm
 inc/Test/MockObject.pm
 inc/Test/More.pm
+inc/Test/Warn.pm
 inc/UNIVERSAL/can.pm
 inc/UNIVERSAL/isa.pm
 lib/Net/Google/DataAPI.pm

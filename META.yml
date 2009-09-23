@@ -8,6 +8,7 @@ build_requires:
   Test::MockModule: 0
   Test::MockObject: 0
   Test::More: 0.88
+  Test::Warn: 0
   UNIVERSAL::can: 0
   UNIVERSAL::isa: 0
 configure_requires:
@@ -39,4 +40,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.02
+version: 0.03
