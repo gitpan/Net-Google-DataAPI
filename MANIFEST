@@ -1,5 +1,6 @@
 Changes
 inc/Module/Install.pm
+inc/Module/Install/Any/Moose.pm
 inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -18,6 +19,10 @@ inc/Test/Warn.pm
 inc/UNIVERSAL/can.pm
 inc/UNIVERSAL/isa.pm
 lib/Net/Google/DataAPI.pm
+lib/Net/Google/DataAPI/Auth/AuthSub.pm
+lib/Net/Google/DataAPI/Auth/Null.pm
+lib/Net/Google/DataAPI/Auth/OAuth.pm
+lib/Net/Google/DataAPI/Role/Auth.pm
 lib/Net/Google/DataAPI/Role/Entry.pm
 lib/Net/Google/DataAPI/Role/HasContent.pm
 lib/Net/Google/DataAPI/Role/Service.pm
@@ -41,6 +46,8 @@ t/02_feedurl/04_delete.t
 t/02_feedurl/05_error.t
 t/03_entry_has/01_basic.t
 t/03_entry_has/02_error.t
+t/04_auth/01_authsub.t
+t/04_auth/02_oauth.t
 t/lib/MyService.pm
 t/lib/MyService/MyEntry.pm
 t/Util.pm
