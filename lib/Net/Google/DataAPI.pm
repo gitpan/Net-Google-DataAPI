@@ -5,7 +5,7 @@ use Any::Moose '::Exporter';
 use Carp;
 use Lingua::EN::Inflect::Number qw(to_PL);
 use XML::Atom;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 any_moose('::Exporter')->setup_import_methods(
     as_is => ['feedurl', 'entry_has'],
@@ -194,7 +194,7 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
 =head1 SYNOPSIS
 
   package MyService;
-  use Moose;
+  use Any::Moose;
   use Net::Google::DataAPI;
 
   with 'Net::Google::DataAPI::Role::Service' => {
@@ -218,7 +218,7 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
   1;
 
   package MyEntry;
-  use Moose;
+  use Any::Moose;
   use Net::Google::DataAPI;
   with 'Net::Google::DataAPI::Role::Entry';
 
