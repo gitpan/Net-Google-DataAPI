@@ -5,7 +5,7 @@ use Any::Moose '::Exporter';
 use Carp;
 use Lingua::EN::Inflect::Number qw(to_PL);
 use XML::Atom;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 any_moose('::Exporter')->setup_import_methods(
     as_is => ['feedurl', 'entry_has'],
@@ -41,6 +41,7 @@ sub feedurl {
     my $from_atom = delete $args{from_atom};
     my $rel = delete $args{rel};
     my $as_content_src = delete $args{as_content_src};
+    my $default = delete $args{default} || '';
 
     my $attr_name = "${name}_feedurl";
 
@@ -49,8 +50,24 @@ sub feedurl {
         $attr_name => (
             isa => 'Str',
             is => 'ro',
+            lazy_build => 1,
             %args,
         )
+    );
+    $class_meta->add_method(
+        "_build_$attr_name" => sub {
+            my $self = shift;
+            return $rel ?  
+            [
+            map { $_->href }
+            grep { $_->rel eq $rel }
+            $self->atom->link
+            ]->[0] :
+            $as_content_src ? 
+            $self->atom->content->elem->getAttribute('src') :
+            $from_atom ?
+            $from_atom->($self, $self->atom) : $default;
+        }
     );
     my $pl_name = to_PL($name);
 
@@ -103,24 +120,6 @@ sub feedurl {
         }
     );
 
-    if ( $class_meta->find_method_by_name('from_atom') ) {
-        $class_meta->add_after_method_modifier(
-            'from_atom' => sub {
-                my ($self) = @_;
-                $self->{$attr_name} = 
-                    $rel ?  
-                        [
-                            map { $_->href }
-                            grep { $_->rel eq $rel }
-                            $self->atom->link
-                        ]->[0] :
-                    $as_content_src ? 
-                        $self->atom->content->elem->getAttribute('src') :
-                    $from_atom ?
-                        $from_atom->($self, $self->atom) : undef;
-            }
-        );
-    }
 }
 
 sub entry_has {
@@ -136,13 +135,18 @@ sub entry_has {
 
     my $from_atom = delete $args{from_atom};
     my $to_atom = delete $args{to_atom};
+    my $default = delete $args{default} || '';
 
     $class_meta->add_attribute(
         $name => (
             isa => 'Str',
             is => 'ro',
-            $to_atom || $tagname ? 
-                (trigger => sub {$_[0]->update }) : (),
+            $to_atom || $tagname ?  (
+                trigger => sub {$_[0]->update }
+            ) : (),
+            $tagname || $from_atom ? (
+                lazy_build => 1,
+            ) : (),
             %args,
         )
     );
@@ -156,11 +160,12 @@ sub entry_has {
                 return $entry;
             }
         );
-        $class_meta->add_after_method_modifier(
-            from_atom => sub {
+        $class_meta->add_method(
+            "_build_$name" => sub {
                 my $self = shift;
+                $self->atom or return $default;
                 my $ns_obj = $ns ? $self->ns($ns) : $self->atom->ns;
-                $self->{$name} = $self->atom->get($ns_obj, $tagname);
+                return $self->atom->get($ns_obj, $tagname) || $default;
             }
         );
     }
@@ -175,10 +180,11 @@ sub entry_has {
         );
     }
     if ($from_atom) {
-        $class_meta->add_after_method_modifier(
-            from_atom => sub {
+        $class_meta->add_method(
+            "_build_$name" => sub {
                 my $self = shift;
-                $self->{$name} = $from_atom->($self, $self->atom);
+                $self->atom or return $default;
+                return $from_atom->($self, $self->atom) || $default;
             }
         );
     }
@@ -197,16 +203,14 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
   use Any::Moose;
   use Net::Google::DataAPI;
 
-  with 'Net::Google::DataAPI::Role::Service' => {
-      service => 'foobar', 
-        # see http://code.google.com/intl/ja/apis/gdata/faq.html#clientlogin
-      source => __PACKAGE__,
-        # source name to pass to Net::Google::AuthSub
-      ns => {
-          foobar => 'http://example.com/schema#foobar',
-      }
-        # registering xmlns
-  };
+  with 'Net::Google::DataAPI::Role::Service';
+
+  # registering xmlns
+  has '+namespaces' => (
+    default => {
+        foobar => 'http://example.com/schema#foobar',
+    },
+  );
 
   # registering feed url
   feedurl myentry => (
@@ -214,6 +218,18 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
         # class name for the entry
       default => 'http://example.com/myfeed',
   );
+
+  sub _build_auth {
+      my ($self) = @_;
+      # .. authsub login things, this is optional.
+      # see Net::Google::Spreadsheets for typical implementation
+      my $authsub = Net::Google::DataAPI::Auth::AuthSub->new(
+          service => 'wise',
+          account_type => 'HOSTED_OR_GOOGLE',
+      );
+      $authsub->login('foo.bar@gmail.com', 'p4ssw0rd');
+      return $authsub;
+  }
 
   1;
 

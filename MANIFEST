@@ -26,6 +26,7 @@ lib/Net/Google/DataAPI/Role/Auth.pm
 lib/Net/Google/DataAPI/Role/Entry.pm
 lib/Net/Google/DataAPI/Role/HasContent.pm
 lib/Net/Google/DataAPI/Role/Service.pm
+lib/Net/Google/DataAPI/Types.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
