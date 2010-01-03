@@ -20,6 +20,7 @@ inc/UNIVERSAL/can.pm
 inc/UNIVERSAL/isa.pm
 lib/Net/Google/DataAPI.pm
 lib/Net/Google/DataAPI/Auth/AuthSub.pm
+lib/Net/Google/DataAPI/Auth/ClientLogin/Multiple.pm
 lib/Net/Google/DataAPI/Auth/Null.pm
 lib/Net/Google/DataAPI/Auth/OAuth.pm
 lib/Net/Google/DataAPI/Role/Auth.pm
@@ -49,6 +50,7 @@ t/03_entry_has/01_basic.t
 t/03_entry_has/02_error.t
 t/04_auth/01_authsub.t
 t/04_auth/02_oauth.t
+t/04_auth/03_multiple.t
 t/lib/MyService.pm
 t/lib/MyService/MyEntry.pm
 t/Util.pm
