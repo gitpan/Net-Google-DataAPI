@@ -35,7 +35,7 @@ requires:
   LWP::UserAgent: 0
   Lingua::EN::Inflect::Number: 0
   Mouse: 0.40
-  Net::Google::AuthSub: 0
+  Net::Google::AuthSub: 0.5
   Net::OAuth: 0
   URI: 0
   XML::Atom: 0
@@ -44,4 +44,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.15
+version: 0.16
