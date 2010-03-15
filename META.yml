@@ -26,7 +26,7 @@ no_index:
     - t
     - xt
 recommends:
-  Moose: 0.56
+  Mouse: 0.51
 requires:
   Any::Moose: 0.04
   Carp: 0
@@ -34,7 +34,7 @@ requires:
   Digest::SHA1: 0
   LWP::UserAgent: 0
   Lingua::EN::Inflect::Number: 0
-  Mouse: 0.40
+  Moose: 0.56
   Net::Google::AuthSub: 0.5
   Net::OAuth: 0
   URI: 0
@@ -44,4 +44,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.16
+version: 0.17
