@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use vars qw( $VERSION $recursing );
-$VERSION = '1.15';
+$VERSION = '1.16';
 
 use Scalar::Util 'blessed';
 use warnings::register;
@@ -41,7 +41,7 @@ sub can
     goto &$orig if $recursing
                 || (   defined $caller
                    &&  defined $_[0]
-                   &&  eval { $caller->isa( $_[0] ); } );
+                   &&  eval { local $recursing = 1; $caller->isa($_[0]) } );
 
     # call an overridden can() if it exists
     my $can = eval { $_[0]->$orig('can') || 0 };
@@ -75,4 +75,4 @@ sub _report_warning
 1;
 __END__
 
-#line 152
+#line 154
