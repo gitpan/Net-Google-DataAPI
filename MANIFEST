@@ -54,7 +54,6 @@ t/04_auth/03_multiple.t
 t/05_types.t
 t/lib/MyService.pm
 t/lib/MyService/MyEntry.pm
-t/Util.pm
 xt/01_podspell.t
 xt/02_perlcritic.t
 xt/03_pod.t

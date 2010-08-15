@@ -3,7 +3,7 @@ use Any::Moose;
 with 'Net::Google::DataAPI::Role::Auth';
 use Net::Google::AuthSub;
 use URI;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 has authsub => (
     is => 'ro',
@@ -17,5 +17,9 @@ sub sign_request {
     $req->header($self->authsub->auth_params);
     return $req;
 }
+
+__PACKAGE__->meta->make_immutable;
+
+no Any::Moose;
 
 1;

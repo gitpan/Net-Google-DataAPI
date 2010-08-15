@@ -1,6 +1,5 @@
 package Net::Google::DataAPI::Role::Service;
 use Any::Moose '::Role';
-use namespace::autoclean;
 use Carp;
 use LWP::UserAgent;
 use URI;
@@ -9,6 +8,7 @@ use XML::Atom::Entry;
 use XML::Atom::Feed;
 use Net::Google::DataAPI::Types;
 use Net::Google::DataAPI::Auth::Null;
+our $VERSION = '0.02';
 
 $XML::Atom::ForceUnicode = 1;
 $XML::Atom::DefaultVersion = 1;
@@ -212,6 +212,8 @@ sub delete {
     );
     return $res;
 }
+
+no Any::Moose '::Role';
 
 1;
 

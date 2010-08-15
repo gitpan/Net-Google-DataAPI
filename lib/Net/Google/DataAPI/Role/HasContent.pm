@@ -1,7 +1,6 @@
 package Net::Google::DataAPI::Role::HasContent;
 use Any::Moose '::Role';
-use namespace::autoclean;
-our $VERSION='0.02';
+our $VERSION='0.03';
 
 requires 'update';
 
@@ -28,6 +27,8 @@ sub param {
         return $self->content->{$arg};
     }
 }
+
+no Any::Moose '::Role';
 
 1;
 

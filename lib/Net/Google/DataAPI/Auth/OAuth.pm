@@ -7,7 +7,7 @@ use LWP::UserAgent;
 use Net::OAuth;
 use URI;
 $Net::OAuth::PROTOCOL_VERSION = Net::OAuth::PROTOCOL_VERSION_1_0A;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 has [qw(consumer_key consumer_secret)] => ( is => 'ro', isa => 'Str', required => 1 );
 
@@ -144,6 +144,9 @@ sub sign_request {
     $req->header(Authorization => $sign->to_authorization_header);
     return $req;
 }
+
+__PACKAGE__->meta->make_immutable;
+no Any::Moose;
 
 1;
 __END__
