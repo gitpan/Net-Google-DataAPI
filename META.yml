@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 1.00'
+generated_by: 'Module::Install version 1.01'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -23,8 +23,8 @@ recommends:
 requires:
   Any::Moose: 0.04
   Carp: 0
-  Crypt::SSLeay: 0
   Digest::SHA1: 0
+  LWP::Protocol::https: 0
   LWP::UserAgent: 0
   Lingua::EN::Inflect::Number: 0
   Mouse: 0.51
@@ -37,4 +37,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.23
+version: 0.25

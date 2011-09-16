@@ -1,17 +1,20 @@
 #line 1
 package UNIVERSAL::can;
+BEGIN {
+  $UNIVERSAL::can::VERSION = '1.20110617';
+}
+# ABSTRACT: work around buggy code calling UNIVERSAL::can() as a function
 
 use strict;
 use warnings;
+use 5.008;
 
-use vars qw( $VERSION $recursing );
-$VERSION = '1.16';
+use vars qw( $recursing $always_warn );
 
 use Scalar::Util 'blessed';
 use warnings::register;
 
 my $orig;
-use vars '$always_warn';
 
 BEGIN
 {
@@ -41,7 +44,8 @@ sub can
     goto &$orig if $recursing
                 || (   defined $caller
                    &&  defined $_[0]
-                   &&  eval { local $recursing = 1; $caller->isa($_[0]) } );
+                   &&  eval { local $recursing = 1;
+                              $caller->isa(blessed $_[0] || $_[0]) } );
 
     # call an overridden can() if it exists
     my $can = eval { $_[0]->$orig('can') || 0 };
@@ -75,4 +79,4 @@ sub _report_warning
 1;
 __END__
 
-#line 154
+#line 156

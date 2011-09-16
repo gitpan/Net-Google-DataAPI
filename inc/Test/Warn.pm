@@ -11,7 +11,7 @@ use warnings;
 #use Array::Compare;
 use Sub::Uplevel 0.12;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 require Exporter;
 

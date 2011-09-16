@@ -1,15 +1,21 @@
 #line 1
 package Test::MockObject;
+BEGIN {
+  $Test::MockObject::VERSION = '1.20110612';
+}
 
 use strict;
 use warnings;
 
-use vars qw( $VERSION $AUTOLOAD );
-$VERSION = '1.09';
-
 use Scalar::Util qw( blessed refaddr reftype weaken );
-use UNIVERSAL::isa;
-use UNIVERSAL::can;
+
+sub import
+{
+    my $self = shift;
+    return unless grep /^-debug/, @_;
+    eval "use UNIVERSAL::isa 'verbose'";
+    eval "use UNIVERSAL::can '-always_warn'";
+}
 
 use Test::Builder;
 
@@ -204,6 +210,8 @@ sub next_call
 
 sub AUTOLOAD
 {
+    our $AUTOLOAD;
+
     my $self = shift;
     my $sub;
     {
@@ -440,4 +448,4 @@ sub _get_key
 
 __END__
 
-#line 883
+#line 904

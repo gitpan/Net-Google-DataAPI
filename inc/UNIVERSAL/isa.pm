@@ -1,15 +1,20 @@
 #line 1
 package UNIVERSAL::isa;
+BEGIN {
+  $UNIVERSAL::isa::VERSION = '1.20110614';
+}
+# ABSTRACT: Attempt to recover from people calling UNIVERSAL::isa as a function
 
 use strict;
-use vars qw( $VERSION $recursing );
+use warnings;
+use 5.6.2;
+
+use vars qw( $recursing );
 
 use UNIVERSAL ();
 
 use Scalar::Util 'blessed';
 use warnings::register;
-
-$VERSION = '1.03';
 
 my ( $orig, $verbose_warning );
 
@@ -97,4 +102,4 @@ __PACKAGE__;
 
 __END__
 
-#line 174
+#line 184
