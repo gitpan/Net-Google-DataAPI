@@ -1,4 +1,7 @@
 Changes
+eg/installed.pl
+eg/login.psgi
+eg/spreadsheets.psgi
 inc/Module/Install.pm
 inc/Module/Install/Any/Moose.pm
 inc/Module/Install/AuthorTests.pm
@@ -23,6 +26,7 @@ lib/Net/Google/DataAPI/Auth/AuthSub.pm
 lib/Net/Google/DataAPI/Auth/ClientLogin/Multiple.pm
 lib/Net/Google/DataAPI/Auth/Null.pm
 lib/Net/Google/DataAPI/Auth/OAuth.pm
+lib/Net/Google/DataAPI/Auth/OAuth2.pm
 lib/Net/Google/DataAPI/Role/Auth.pm
 lib/Net/Google/DataAPI/Role/Entry.pm
 lib/Net/Google/DataAPI/Role/HasContent.pm
@@ -38,6 +42,7 @@ t/01_role/01_service/02_namespace.t
 t/01_role/01_service/03_request.t
 t/01_role/01_service/04_methods.t
 t/01_role/01_service/05_debug.t
+t/01_role/01_service/06_pass_through.t
 t/01_role/02_entry/01_instanciate.t
 t/01_role/02_entry/02_update.t
 t/01_role/03_has_content/01_basic.t
@@ -51,6 +56,7 @@ t/03_entry_has/02_error.t
 t/04_auth/01_authsub.t
 t/04_auth/02_oauth.t
 t/04_auth/03_multiple.t
+t/04_auth/04_oauth2.t
 t/05_types.t
 t/lib/MyService.pm
 t/lib/MyService/MyEntry.pm

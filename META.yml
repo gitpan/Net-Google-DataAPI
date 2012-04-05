@@ -3,11 +3,12 @@ abstract: 'Base implementations for modules to negotiate with Google Data APIs'
 author:
   - 'Nobuo Danjou <nobuo.danjou@gmail.com>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.59
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.59
 distribution_type: module
-generated_by: 'Module::Install version 1.01'
+dynamic_config: 1
+generated_by: 'Module::Install version 1.06'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,6 +31,7 @@ requires:
   Mouse: 0.51
   Net::Google::AuthSub: 0.5
   Net::OAuth: 0
+  Net::OAuth2: 0
   Text::Glob: 0
   URI: 0
   XML::Atom: 0
@@ -37,4 +39,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.25
+version: 0.26
