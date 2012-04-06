@@ -4,6 +4,13 @@ author:
   - 'Nobuo Danjou <nobuo.danjou@gmail.com>'
 build_requires:
   ExtUtils::MakeMaker: 6.59
+  Test::Exception: 0
+  Test::MockModule: 0
+  Test::MockObject: 0
+  Test::More: 0.88
+  Test::Warn: 0
+  UNIVERSAL::can: 0
+  UNIVERSAL::isa: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.59
 distribution_type: module
@@ -31,7 +38,7 @@ requires:
   Mouse: 0.51
   Net::Google::AuthSub: 0.5
   Net::OAuth: 0
-  Net::OAuth2: 0
+  Net::OAuth2: 0.07
   Text::Glob: 0
   URI: 0
   XML::Atom: 0
@@ -39,4 +46,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.26
+version: 0.26_1
