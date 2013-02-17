@@ -47,4 +47,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.2802_2
+version: 0.2803
