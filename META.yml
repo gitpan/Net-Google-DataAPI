@@ -7,7 +7,7 @@ build_requires:
   Test::Exception: 0
   Test::MockModule: 0
   Test::MockObject: 0
-  Test::More: 0.88
+  Test::More: '0.88'
   Test::Warn: 0
   UNIVERSAL::can: 0
   UNIVERSAL::isa: 0
@@ -15,7 +15,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.59
 distribution_type: module
 dynamic_config: 1
-generated_by: 'Module::Install version 1.06'
+generated_by: 'Module::Install version 1.08'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,7 +27,7 @@ no_index:
     - t
     - xt
 recommends:
-  Moose: 0.56
+  Moose: '0.56'
 requires:
   Any::Moose: 0.04
   Carp: 0
@@ -35,10 +35,10 @@ requires:
   LWP::Protocol::https: 0
   LWP::UserAgent: 0
   Lingua::EN::Inflect::Number: 0
-  Mouse: 0.51
-  Net::Google::AuthSub: 0.5
+  Mouse: '0.51'
+  Net::Google::AuthSub: '0.5'
   Net::OAuth: 0
-  Net::OAuth2: 0.53
+  Net::OAuth2: '0.53'
   Text::Glob: 0
   URI: 0
   XML::Atom: 0
@@ -47,4 +47,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: 0.2803
+version: '0.2804'

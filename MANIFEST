@@ -35,6 +35,8 @@ t/01_role/01_service/03_request.t
 t/01_role/01_service/04_methods.t
 t/01_role/01_service/05_debug.t
 t/01_role/01_service/06_pass_through.t
+t/01_role/01_service/07_max_line_length.t
+t/01_role/01_service/08_max_line_length_custom_size.t
 t/01_role/02_entry/01_instanciate.t
 t/01_role/02_entry/02_update.t
 t/01_role/03_has_content/01_basic.t
