@@ -38,7 +38,7 @@ requires:
   Mouse: '0.51'
   Net::Google::AuthSub: '0.5'
   Net::OAuth: 0
-  Net::OAuth2: '0.53'
+  Net::OAuth2: '0.60'
   Text::Glob: 0
   URI: 0
   XML::Atom: 0
@@ -46,5 +46,5 @@ requires:
   perl: 5.8.1
 resources:
   license: http://dev.perl.org/licenses/
-  repository: git://github.com/lopnor/Net-Google-DataAPI.git
-version: '0.2804'
+  repository: git://lopnor.github.com/lopnor/Net-Google-DataAPI.git
+version: '0.2805'
